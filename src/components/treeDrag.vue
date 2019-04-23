@@ -1,17 +1,17 @@
 <template>
   <div class="treeDrag">
     <draggable :list="data" :options="{ forceFallback: true }">
-      <div v-for="item in data" :key="item.id">
+      <div class="firstLevel" v-for="item in data" :key="item.id">
           <div class="leverFirst">
             {{item.name}}
           </div>
         <draggable :list="item.children" :options="{ forceFallback: true }">
-          <div v-for="it in item.children" :key="it.id">
+          <div class="SecondLevel" v-for="it in item.children" :key="it.id">
             <div class="leverSecond">
               {{it.name}}
             </div>
              <draggable :list="it.children" :options="{ forceFallback: true }">
-                <div v-for="ele in it.children" :key="ele.id">
+                <div class="ThirdLevel" v-for="ele in it.children" :key="ele.id">
                   <div class="leverThird">
                     {{ele.name}}
                   </div>
@@ -74,10 +74,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   .treeDrag{
     width:300px;
+    color: #fff;
     margin-left:auto;
     margin-right:auto;
+  }
+  .firstLevel{
+    background:#D2691E;
+  }
+  .SecondLevel{
+    background:#CD853F;
+  }
+  .leverThird{
+    background:#D2B48C;
   }
   .leverFirst{
     border: 1px solid gray;
